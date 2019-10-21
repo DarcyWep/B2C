@@ -1,0 +1,98 @@
+<div id="wrapper">
+    <app-nav></app-nav>
+    <div id="page-wrapper">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h1>用户管理</h1>
+                <div class="alert alert-success alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    欢迎来到用户管理界面，在这里你可以查看到所有用户的信息。
+                    <br />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><i class="fa fa-users"></i> 用 户 列 表</h3>
+                        <div class="user-search col-lg-3 col-md-4 col-sm-6 col-xs-12 col-lg-offset-9 col-md-offset-8 col-sm-offset-6 col-xs-offset-0">
+                            <div class="form-group input-group">
+                                <input type="text" class="form-control">
+                                <span class="input-group-btn">
+                                  <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div id="shieldui-grid1">
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                  <tr>
+                                    <th>#</th>
+                                    <th>邮箱</th>
+                                    <th>注册时间</th>
+                                    <th>密码</th>
+                                    <th>状态</th>
+                                    <th>操作</th>
+                                  </tr>  
+                                </thead>
+                                <tbody>
+                                  <tr *ngFor="let user of userList">
+                                    <th>{{user.id}}</th>
+                                    <td>{{user.email}}</td>
+                                    <td>{{user.createTime}}</td>
+                                    <td><a class="editButton" data-toggle="modal" data-target="#alertUserPasswordModal" (click)="selectId(user.id, user.email)">修改密码</a></td>
+                                    <td>
+                                        {{user.statusString}}
+                                    </td>
+                                    <td>
+                                        <span *ngIf="user.status == 1" class="label label-danger editButton" (click)="alterUserStatus(user.id, -1)">冻结</span>
+                                        <span *ngIf="user.status == -1" class="label label-success editButton" (click)="alterUserStatus(user.id, 1)">激活</span>
+                                    </td>
+                                   </tr>
+                                </tbody>
+                            </table>
+                            <div shark-pager 
+                                [currentPage]="currentPage" 
+                                [totalPage]="totalPage" 
+                                [gopage]=false
+                                [hl]="hl"
+                                [segmentSize]=5
+                                [startFrom]=1
+                                (onPageChanged)="onPageChanged($event);"
+                                style="float: right; cursor:pointer;" >
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="alertUserPasswordModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">修改用户{{currentUserEmail}}的密码</h4>
+            </div>
+            <div class="modal-body">
+              <div class="form-group">
+                <label class="">新的密码</label>
+                <input type="password" class="form-control"  id="inputUserNewPassword" [(ngModel)]="newPassword">
+              </div>
+              <span *ngIf="passwordResult" id="helpBlock" class="help-block">密码需要六位以上数字字母组成</span>
+            </div>
+            <div class="modal-footer">
+              <button id="closeModal" type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+              <button type="button" class="btn btn-primary" (click)="alterUserPassword()">保存</button>
+            </div>
+          </div>
+        </div>
+    </div>
+
+</div>

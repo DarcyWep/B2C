@@ -1,0 +1,179 @@
+<app-share-header></app-share-header>
+<app-share-search-nav></app-share-search-nav>
+
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+    </ol>
+    
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+        <div class="item active">
+            <img src="../../assets/img/test/l1.JPG" alt="...">
+            <div class="carousel-caption">
+                ...
+            </div>
+        </div>
+        <div class="item">
+            <img src="../../assets/img/test/l2.jpg" alt="...">
+            <div class="carousel-caption">
+                ...
+            </div>
+        </div>
+        <div class="item active">
+            <img src="../../assets/img/test/l3.jpg" alt="...">
+            <div class="carousel-caption">
+                ...
+            </div>
+        </div>
+    </div>
+    
+    <!-- Controls -->
+    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+
+<div class="container">
+    <div class="col-xs-2">
+        <div class="ensure">
+            <div class="row">
+                <div class="col-xs-2 col-md-2">
+                    <svg class="icon" aria-hidden="true">
+                    　　<use xlink:href="#icon-zhengpin"></use>
+                    </svg>
+                </div>
+                <div class="word col-xs-10 col-md-10">
+                    正品保证
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-2">
+        <div class="ensure">
+            <div class="row">
+                <div class="col-xs-2 col-md-2">
+                    <svg class="icon" aria-hidden="true">
+                    　　<use xlink:href="#icon-tui"></use>
+                    </svg>
+                </div>
+                <div class="word col-xs-10 col-md-10">
+                    七天无理由退款
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-2">
+        <div class="ensure">
+            <div class="row">
+                <div class="col-xs-2 col-md-2">
+                    <svg class="icon" aria-hidden="true">
+                    　　<use xlink:href="#icon-baoyou"></use>
+                    </svg>
+                </div>
+                <div class="word col-xs-10 col-md-10">
+                    全场满99包邮
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container red-line">
+    <!-- 红色横线 -->
+    <div class="row"></div>  
+</div>
+
+<!-- 展示商品 -->
+<div class="container">
+    <div class="row">
+        <div *ngFor="let product of products" class="col-xs-12 col-sm-6 col-md-4 col-lg-4 show-product">
+            <div class="thumbnail">
+                <a data-toggle="modal" data-target="#productDetailModal" class="thumbnail" (click)="getProductDetail(product)">
+                    <img src="{{product.mainImg}}" alt="...">
+                </a>
+                <div class="caption">
+                    <a data-toggle="modal" data-target="#productDetailModal">
+                        <h4>{{product.name}}</h4>
+                    </a>
+                    <p>
+                        <b>￥{{product.price}}</b>
+                        <a class="btn btn-primary" role="button"  (click)="addToCart(product.id)">加入购物车</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- productDetailModal -->
+<div class="modal fade" id="productDetailModal" tabindex="-1" role="dialog" aria-labelledby="productDetailModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="productDetailModalLabel">商品详细</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="panel panel-primary">
+                            <div class="panel-body">
+                                <div id="shieldui-grid1">
+                                    <table class="table table-bordered table-hover">
+                                        <tbody>
+                                            <tr>
+                                                <th>商品ID</th>
+                                                <td>{{productDetail.id}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>商品名称</th>
+                                                <td>{{productDetail.name}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>商品图片</th>
+                                                <td>
+                                                    <img src="{{productDetail.mainImg}}" alt="...">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>商品价格</th>
+                                                <td>￥{{productDetail.price}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>商品类别</th>
+                                                <td>{{productDetail.category}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>上架时间</th>
+                                                <td>{{productDetail.createTime}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>更新时间</th>
+                                                <td>{{productDetail.updateTime}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button  id="closeProductDetailModal" type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" (click)="addToCart(productDetail.id)">加入购物车</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-share-footer></app-share-footer>

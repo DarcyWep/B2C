@@ -1,0 +1,77 @@
+<app-share-header></app-share-header>
+<div class="container">
+    <div class="search-box row">
+        <div class="logo col-xs-12">
+            <a href="">
+                <img src="../../assets/img/logo/logo.jpg" alt=""/>
+                研书屋
+            </a>
+            为了梦想而奋斗！
+        </div>
+    </div>
+    <!-- 蓝色横线 -->
+    <div class="row" style="height: 1px; background-color: #2db4ea;"></div>
+    <!-- 空白 -->
+    <div class="row" style="height: 36px;" ></div>
+    <!-- 购物车内容 -->
+    <div class="row">
+        
+        <table class="table table-bordered table-hover">
+            <caption>未完成订单</caption>
+            <thead *ngIf="!isHaveNoFinishOrder">
+                <tr>
+                    <td>没有未完成订单</td>
+                </tr>
+            </thead>
+            <thead *ngIf="isHaveNoFinishOrder">
+                <tr>
+                    <td>订单编号</td>
+                    <td>下单时间</td>
+                    <td>总价</td>
+                    <td>状态</td>
+                    <td>操作</td>
+                </tr>
+            </thead>
+            <tbody *ngIf="isHaveNoFinishOrder">
+                <tr *ngFor="let order of notFinishOrders">
+                    <td>{{order.No}}</td>
+                    <td>{{order.createTime}}</td>
+                    <td>￥{{order.totalPrice}}</td>
+                    <td>{{order.statusString}}</td>
+                    <td>
+                        <button type="submit" class="btn btn-info btn-xs" (click)="confirmReceipt(order)"
+                                [disabled]="order.statusString=='未发货'" >
+                            确认收货
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-bordered table-hover">
+            <caption>已完成订单</caption>
+                <thead *ngIf="!isHaveFinishOrder">
+                    <tr>
+                        <td>还没有已完成订单</td>
+                    </tr>
+                </thead>
+                <thead *ngIf="isHaveFinishOrder">
+                    <tr class="">
+                        <td>订单编号</td>
+                        <td>完成时间</td>
+                        <td>总价</td>
+                        <td>状态</td>
+                    </tr>
+                </thead>
+                <tbody *ngIf="isHaveFinishOrder">
+                    <tr *ngFor="let order of finishOrders">
+                        <td>{{order.No}}</td>
+                        <td>{{order.endTime}}</td>
+                        <td>￥{{order.totalPrice}}</td>
+                        <td>已完成</td>
+                    </tr>
+                </tbody>
+        </table>
+    </div>
+</div>
+
+

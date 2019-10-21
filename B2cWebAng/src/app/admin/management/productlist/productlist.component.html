@@ -1,0 +1,200 @@
+<div id="wrapper">
+    <app-nav></app-nav>
+    <div id="page-wrapper">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h1>商品管理</h1>
+                <div class="alert alert-success alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    欢迎来到商品管理界面，在这里你可以查看到所有商品的信息。
+                    <br />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><i class="fa fa-globe"></i> 商 品 列 表</h3>
+                        <div class="product-search col-lg-4 col-md-6 col-sm-8 col-xs-12 col-lg-offset-8 col-md-offset-7 col-sm-offset-4 col-xs-offset-0">
+                            <div class="form-group input-group">
+                                <input type="text" class="form-control">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+                                </span>
+                                <span class="add-product input-group-btn">
+                                    <button class="button button-primary button-pill button-small" type="button" data-toggle="modal" data-target="#addProductModal">添加商品</button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div id="shieldui-grid1">
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                  <tr>
+                                    <th>商品ID</th>
+                                    <th>商品名称</th>
+                                    <th>商品价格</th>
+                                    <th>商品类别</th>
+                                    <th>商品库存</th>
+                                    <th>上架时间</th>
+                                    <th>更新时间</th>
+                                  </tr>  
+                                </thead>
+                                <tbody *ngFor="let product of products">
+                                  <tr>
+                                    <th>{{product.id}}</th>
+                                    <td>{{product.name}}</td>
+                                    <td>{{product.price}}</td>
+                                    <td>{{product.category}}</td>
+                                    <td>{{product.stock}}</td>
+                                    <td>{{product.createTime}}</td>
+                                    <td>{{product.updateTime}}</td>
+                                    <!-- <td><a class="editButton" data-toggle="modal" data-target="#productDetailModal" (click)="getProductDetail(product.id)">查看详细</a></td> -->
+                                  </tr>
+                                </tbody>
+                            </table>
+                            <div shark-pager 
+                                [currentPage]="currentPage" 
+                                [totalPage]="totalPage" 
+                                [gopage]=false
+                                [hl]="hl"
+                                [segmentSize]=5
+                                [startFrom]=1
+                                (onPageChanged)="onPageChanged($event);"
+                                style="float: right; cursor:pointer;" >
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- productDetailModal -->
+    <!-- <div class="modal fade" id="productDetailModal" tabindex="-1" role="dialog" aria-labelledby="productDetailModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="productDetailModalLabel">商品详细</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title"><i class="fa fa-newspaper-o"></i> 商 品 详 细 </h3>
+                                </div>
+                                <div class="panel-body">
+                                    <div id="shieldui-grid1">
+                                        <table class="table table-bordered table-hover">
+                                            <thead>
+                                                <tr>
+                                                  <th colspan="2" style="text-align: center">商品详情</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <th>商品ID</th>
+                                                    <td>{{productDetail.id}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>商品名称</th>
+                                                    <td>{{productDetail.name}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>商品价格</th>
+                                                    <td>{{productDetail.price}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>商品库存</th>
+                                                    <td>{{productDetail.stock}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>商品类别</th>
+                                                    <td>{{productDetail.category}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>上架时间</th>
+                                                    <td>{{productDetail.createTime}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>更新时间</th>
+                                                    <td>{{productDetail.updateTime}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button  id="closeProductDetailModal" type="button" class="btn btn-default" data-dismiss="modal">确定</button>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+    <!-- 增加商品弹框 -->
+    <div class="modal fade" id="addProductModal" tabindex="-1" role="dialog" aria-labelledby="addProductModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title add-product-title" id="addProductLabel"><b>添 加 商 品</b></h4>
+                </div>
+                <div class="modal-body">
+                    <form enctype="multipart/form-data" class="form-horizontal" style="width:100%" [formGroup]="productForm">
+                            <div  class="form-group ">
+                                <label for="oldPassword" class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label">商品名称：</label>
+                                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                    <input class="form-input form-control" type="text" name="productName" required formControlName="productName" (click)="inputEmpty()" placeholder="">
+                                </div>
+                            </div>
+                            <div  class="form-group">
+                                <label for="oldPassword" class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label">商品价格：</label>
+                                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                    <input class="form-input form-control" type="text" name="productPrice" required formControlName="productPrice" (click)="inputEmpty()" placeholder="">
+                                </div>
+                            </div>
+                            <div  class="form-group">
+                                <label for="oldPassword" class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label">商品库存：</label>
+                                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                    <input class="form-input form-control" type="text" name="productStock" required formControlName="productStock" (click)="inputEmpty()" placeholder="">
+                                </div>
+                            </div>
+                            <div  class="form-group">
+                                <label for="oldPassword" class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label">商品类别：</label>
+                                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                    <select class="form-control form-select" name="productCategory" required formControlName="productCategory" (click)="inputEmpty()" placeholder=""> 
+                                        <option value="数学">数学</option> 
+                                        <option value="英语">英语</option> 
+                                        <option value="政治">政治</option>
+                                        <option value="专业课">专业课</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div  class="form-group ">
+                                <label for="oldPassword" class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label">商品主图：</label>
+                                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                    <input class="file" type="file" #mainImg (change)="addProductMainImg(mainImg)" placeholder="">
+                                </div>
+                            </div>
+                            <div  class="form-group warnning" *ngIf="!isProductHaveEmpty">
+                                <label class="col-lg-12 col-md-12 col-sm-12 col-xs-12 control-label">商品各个属性不可为空!</label>
+                            </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button id="closeaddProductModal" type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" (click)="uploadProduct()" >添加商品</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

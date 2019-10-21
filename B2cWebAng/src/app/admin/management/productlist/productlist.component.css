@@ -1,0 +1,29 @@
+.editButton:hover{
+    text-decoration: none ;
+    cursor:pointer;
+}
+.editButton::link,.editButton::visited{
+    text-decoration:none;  
+}
+
+.product-search{
+    margin-top: -25.5px;
+}
+
+.add-product{
+    padding-left: 20px;
+    border: none !important;
+}
+.add-product button{
+    border: none !important;
+}
+.add-product-table tbody th{
+    width: 30%;
+}
+.add-product-title{
+    text-align: center;
+}
+.warnning label{
+    text-align: center;
+    color: crimson;
+}

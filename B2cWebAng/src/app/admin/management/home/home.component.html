@@ -1,0 +1,59 @@
+<div id="wrapper">
+  <app-nav></app-nav>
+  <div id="page-wrapper">
+      <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <h1>首页</h1>
+              <div class="alert alert-success alert-dismissable">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  欢迎来到管理界面，在这里你可以查看到所有管理员的操作信息。请谨慎使用！
+                  <br />
+              </div>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <div class="panel panel-primary">
+                  <div class="panel-heading">
+                      <h3 class="panel-title"><i class="fa fa-list-ol"></i> 操 作 记 录</h3>
+                  </div>
+                  <div class="panel-body">
+                      <div id="shieldui-grid1">
+                          <table class="table table-bordered table-hover">
+                              <thead>
+                                <tr>
+                                  <th>#</th>
+                                  <th>操作日期</th>
+                                  <th>管理员邮箱</th>
+                                  <th>管理员登录ip</th>
+                                  <th>操作内容</th>
+                                </tr>  
+                              </thead>
+                              <tbody >
+                                <tr *ngFor="let record of records">
+                                  <th>{{record.id}}</th>
+                                  <td>{{record.time}}</td>
+                                  <td>{{record.adminEmail}}</td>
+                                  <td>{{record.ip}}</td>
+                                  <td>{{record.operation}}</td>
+                                </tr>
+                              </tbody>
+                          </table>
+                          <div shark-pager 
+                              [currentPage]="currentPage" 
+                              [totalPage]="totalPage" 
+                              [gopage]=false
+                              [hl]="hl"
+                              [segmentSize]=5
+                              [startFrom]=1
+                              (onPageChanged)="onPageChanged($event);"
+                              style="float: right; cursor:pointer;" >
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <!-- /.row -->
+  </div>
+</div>

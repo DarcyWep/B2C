@@ -1,0 +1,85 @@
+.search-box{
+    height: 120px;
+    margin: 0px;
+    text-align: center;
+}
+.logo{
+    height: 60px !important;
+    margin-top: 30px;
+    line-height: 60px;
+    font-family: "楷体";
+    font-size: 16px;
+    color: #e4393c;
+}
+.logo a{
+    text-decoration: none;
+    color: #2db4ea;
+    font-size: 36px;
+    height: 60px;
+    line-height: 60px;
+}
+.logo a img{
+    height: 60px;
+}
+.regist-title{
+    text-align: center;
+    font-size: 24px;
+}
+
+.regist-body{
+    margin: 0 auto;
+}
+
+.content{
+    width: 370px;
+    margin: 0 auto;
+}
+.content form div{
+    padding-top: 10px;
+    text-align: center;
+}
+.content form div label{
+    width: 70px;
+    text-align: right;
+}
+.content form div input{
+    width: 300px;
+}
+.content form div span{
+    background-color: #F0F5F1;
+    color: #2db4ea;
+    border: 0px;
+    text-align: center;
+}
+.content form div button{
+    background-color: #2db4ea;
+    color: #ffffff;
+}
+.regist-button button{
+    width: 370px;
+    height: 40px;
+    margin-top: 0px;
+}
+.regist-pro{
+    background-color: #F0F5F1 !important;
+    vertical-align: middle;
+}
+.regist-pro span{
+    border: 0px;
+    background-color: #F0F5F1 !important;
+}
+.regist-pro span input{
+    padding-top: 5px;
+    width: 27px !important;
+    height: 13px !important;
+}
+.regist-pro span a{
+    cursor: pointer;
+    text-decoration: none;
+}
+.verify-code input{
+    width: 200px !important;
+}
+.verify-code button{
+    width: 100px !important;
+}

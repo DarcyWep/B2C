@@ -1,0 +1,127 @@
+.search-box{
+    height: 120px;
+    margin: 0px;
+}
+.logo{
+    float: left;
+    height: 60px !important;
+    margin-top: 30px;
+    line-height: 60px;
+}
+.logo a{
+    text-decoration: none;
+    color: #2db4ea;
+    font-size: 36px;
+    height: 60px;
+    line-height: 60px;
+}
+.logo a img{
+    height: 60px;
+}
+
+.search-input{
+    margin-top: 42px;
+    height: 36px;
+}
+.search input{
+    height: 36px;
+    display: block;
+    font-size: 16px;
+    padding: 0 10px;
+    border: 3px solid #2db4ea;
+}
+.search span button{
+    height: 36px;
+    background: #2db4ea;
+    border: #2db4ea;
+    color: white;
+    outline: none; /*去掉点击时的蓝色边框*/
+}
+
+.icon {
+    width: 1em; height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+}
+.cart{
+    text-align: right;
+    line-height: 41px;
+    height: 41px;
+    margin-top: 39.5px;
+}
+.cart button{
+    line-height: 41px;
+    height: 41px;
+    font-size: 32px;
+    border: 0px;
+    outline: none;
+}
+.cart button div{
+    margin-top: -6px;
+    line-height: 41px;
+    height: 41px;
+}
+.cart button span{
+    color: #1096DC;
+    font-size: 26px;
+    line-height: 41px;
+    padding-left: 16px;
+    height: 41px;
+}
+
+.nav-row{
+    height: 40px;
+    border-bottom: 2px solid #3ab5e6;
+    margin: 0px;
+}
+.nav-row-col-all{
+    color: #000000 !important;
+    background-color: #F0F5F1;
+}
+.nav-row-col-all:hover{
+    background-color: #3ab5e6;
+    color: #ffffff !important;
+}
+.nav-row-col-all-vary{
+    background-color: #3ab5e6;
+    color: #ffffff !important;
+}
+.click-home{
+    display: none;
+}
+.no-click-home{
+    display: inline;
+}
+.subject-home{
+    cursor: pointer; /*鼠标变成手*/
+    text-align: center;
+    line-height: 40px;
+    height: 40px;
+    font-size: 16px;
+}
+.subject-home svg{
+    font-size: 22px;
+}
+.subject-home svg use{
+    margin-top: 10px;
+}
+.nav-row-col-home{
+    color: #000000 !important;
+    background-color: #F0F5F1;
+}
+.nav-row-col-home:hover{
+    background-color: #3ab5e6;
+    color: #ffffff !important;
+}
+.nav-row-col-home-vary{
+    color: #ffffff !important;
+    background-color: #3ab5e6;
+}
+.subject{
+    cursor: pointer; /*鼠标变成手*/
+    text-align: center;
+    line-height: 40px;
+    height: 40px;
+    font-size: 16px;
+}

@@ -1,0 +1,10 @@
+.editButton:hover{
+    text-decoration: none ;
+    cursor:pointer;
+}
+.editButton::link,.editButton::visited{
+    text-decoration:none;  
+}
+.user-search{
+    margin-top: -25.5px;
+}

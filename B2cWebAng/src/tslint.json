@@ -1,0 +1,27 @@
+{
+    "extends": "../tslint.json",
+    "rules": {
+        "directive-selector": [
+            true,
+            "attribute",
+            "app",
+            "camelCase"
+        ],
+        "component-selector": [
+            true,
+            "element",
+            "app",
+            "kebab-case"
+        ]
+    },
+    "type": "object",
+    "properties": {
+        "destructuring": {
+              "type": "string",
+              "enum": [
+                    "all",
+                    "any"
+              ]
+        }
+    }
+}

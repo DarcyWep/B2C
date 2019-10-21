@@ -1,0 +1,53 @@
+.body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    vertical-align: middle;
+    text-align: center;
+}
+.user-info{
+    width: 600px;
+}
+.password{
+    color: red;
+}
+.alter-passwd{
+    cursor: pointer;
+}
+.modal-title{
+    text-align: center;
+}
+.search-box{
+    height: 120px;
+    margin: 0px;
+    text-align: center;
+}
+.logo{
+    height: 60px !important;
+    margin-top: 30px;
+    line-height: 60px;
+    font-family: "楷体";
+    font-size: 16px;
+    color: #e4393c;
+}
+.logo a{
+    text-decoration: none;
+    color: #2db4ea;
+    font-size: 36px;
+    height: 60px;
+    line-height: 60px;
+}
+.logo a img{
+    height: 60px;
+}
+.login-title{
+    margin-top: 50px;
+    text-align: center;
+    font-size: 24px;
+}
+
+.login-body{
+    margin: 0 auto;
+    height: 220px;
+}

@@ -1,0 +1,63 @@
+.carousel-inner{
+    height: 470px;
+}
+.carousel-inner img{
+    height: 470px;
+    width: 100%;
+}
+
+.ensure{
+    height: 40px;
+    line-height: 40px;
+}
+.ensure div{
+    height: 40px;
+    line-height: 40px;
+}
+.ensure div div svg{
+    width: 30px;
+    height: 30px;
+    margin-top: 5px;
+}
+.red-line div{
+    height: 2px;
+    background-color: #e4393c;
+}
+.show-product{
+    height: 520px;
+}
+.show-product img{
+    height: 340px;
+    width: 340px;
+}
+.show-product div div{
+    margin-top:  -25px;
+}
+.show-product a{
+    cursor: pointer;
+    text-decoration: none;
+    border: 0px;
+}
+.show-product p{
+    color: red;
+    font-size: 16px;
+}
+.show-product p a{
+    margin-left: 175px;
+}
+.modal-header h4{
+    text-align: center;
+}
+table tbody img{
+    height: 260px;
+    width: 260px;
+}
+table tbody th{
+    vertical-align: middle;
+    text-align: center;
+}
+table tbody td{
+    vertical-align: middle;
+    text-align: center;
+
+}

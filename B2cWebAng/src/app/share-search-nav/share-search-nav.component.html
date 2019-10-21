@@ -1,0 +1,65 @@
+<div class="search-nav">
+    <div class="container">
+        <div class="search-box row">
+            <div class="logo col-xs-3">
+                <a href="">
+                    <img src="../../assets/img/logo/logo.jpg" alt=""/>
+                    研书屋
+                </a>
+            </div>
+            <div class="search-input col-xs-6">
+                <div class="input-group search">
+                    <input type="text" class="form-control" placeholder="计算机联考王道408">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">搜索</button>
+                    </span>
+                </div>
+            </div>
+            <div class="search-cart col-xs-3 pull-right">
+                <div class="cart">
+                    <button class="btn btn-default" (click)="goCart()">
+                            <div>
+                                <svg class="icon" aria-hidden="true">
+                                　　<use xlink:href="#icon-gouwuche2"></use>
+                                </svg>
+                                <span>购物车</span>
+                            </div>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="row nav nav-tabs nav-row">
+            <li class="col-xs-3" [ngClass]="{'nav-row-col-all':!pressHome, 'nav-row-col-all-vary':pressHome}" role="presentation">
+                <div class="subject-home" (click)="goHome()">
+                    <svg [ngClass]="{'click-home': !pressHome, 'no-click-home': pressHome}" class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-daohang-copy"></use>
+                    </svg>
+                    <svg [ngClass]="{'click-home': pressHome, 'no-click-home': !pressHome}" class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-daohang-copy-copy"></use>
+                    </svg>
+                    所有图书分类
+                </div>
+            </li>
+            <li class="col-xs-2" [ngClass]="{'nav-row-col-home':!pressMath, 'nav-row-col-home-vary':pressMath}" role="presentation">
+                <div class="subject" (click)="goMath()">
+                    数学
+                </div>
+            </li>
+            <li class="col-xs-2" [ngClass]="{'nav-row-col-home':!pressEnglish, 'nav-row-col-home-vary':pressEnglish}" role="presentation">
+                <div class="subject" (click)="goEnglish()">
+                    英语
+                </div>
+            </li>
+            <li class="col-xs-2" [ngClass]="{'nav-row-col-home':!pressPolity, 'nav-row-col-home-vary':pressPolity}" role="presentation">
+                <div class="subject" (click)="goPolity()">
+                    政治
+                </div>
+            </li>
+            <li class="col-xs-2" [ngClass]="{'nav-row-col-home':!pressSpeCourse, 'nav-row-col-home-vary':pressSpeCourse}" role="presentation">
+                <div class="subject" (click)="goSpeCourse()">
+                    专业课
+                </div>
+            </li>
+        </div>
+    </div>
+</div>

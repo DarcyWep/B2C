@@ -1,0 +1,36 @@
+.footer-sale{
+    height: 100px;
+}
+.footer-sale ul li{
+    height: 60px;
+    line-height: 60px;
+    width: 275px;
+    margin-top: 20px;
+    border: 0px;
+    padding: 0 auto;
+    background-color: #F0F5F1;
+}
+.footer-sale ul li img{
+    height: 50px;
+    width: 50px;
+    border: none;
+    max-width: 100%;
+    padding: 0;
+    margin-right: 10px;
+    margin-top: -34px;
+}
+.footer-sale ul li div{
+    display: inline-block;
+}
+.footer-sale ul li div p{
+    height: 25px;
+    line-height: 25px;
+    padding: 0 auto;
+    margin: 0 auto;
+}
+.footer-22{
+    font-size: 22px;
+}
+.footer-no{
+    height: 20px;
+}

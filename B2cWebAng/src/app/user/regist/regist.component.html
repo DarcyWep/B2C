@@ -1,0 +1,79 @@
+<app-share-header></app-share-header>
+
+<div class="body">
+    <div class="container">
+        <div class="search-box row">
+            <div class="logo col-xs-12">
+                <a href="">
+                    <img src="../../assets/img/logo/logo.jpg" alt=""/>
+                    研书屋
+                </a>
+                为了梦想而奋斗！
+            </div>
+        </div>
+        <!-- 蓝色横线 -->
+        <div class="row" style="height: 1px; background-color: #2db4ea;"></div>
+        <!-- 空白 -->
+        <div class="row" style="height: 20px;" ></div>
+        <!-- 用户注册标题 -->
+        <div class="row regist-title">
+            <b>用户注册</b>
+        </div>
+        <!-- 空白 -->
+        <div class="row" style="height: 10px;" ></div>
+        <!-- 注册内容 -->
+        <div class="row regist-body">
+            <div class="content">
+                <form [formGroup]="userForm">
+                    <div class="form-inline">
+                        <label>邮箱地址：</label>
+                        <input type="email" class="form-control" placeholder="邮箱地址" required (blur)="isHaveThisEmail()" formControlName="email">
+                        <span class="input-group-addon" id="basic-addon2" *ngIf="!userForm.get('email').value && !userForm.get('email').untouched">邮箱没有填写!</span>
+                        <span class="input-group-addon" id="basic-addon2" *ngIf="userForm.get('email').value" >{{checkEmailString}}</span>
+                    </div>
+                    <div class="form-inline verify-code">
+                        <label>验证码：</label>
+                        <input type="text" class="form-control" placeholder="验证码" required formControlName="verifyCode">
+                        <button class="btn btn-default" (click)="getVerifyCodeOfEmail()" [disabled]="verifyCodeBtnStatus">{{verifyCodeBtnText}}</button>
+                        <span class="input-group-addon" id="basic-addon2" *ngIf="submitted && !submitResult" >验证码错误!</span>
+                    </div>
+                    <div class="form-inline">
+                        <label>密码：</label>
+                        <input type="password" class="form-control" placeholder="密码" required minlength="6" (blur)="checkPassword()" formControlName="password">
+                        <span class="input-group-addon" id="basic-addon2" *ngIf="!userForm.get('password').value && !userForm.get('password').untouched" >密码没有填写!</span>
+                        <span class="input-group-addon" id="basic-addon2" *ngIf="userForm.get('password').value && userForm.get('password').status === 'INVALID'" >密码由6位以上数字字母组成!</span>
+                    </div>
+                    <div class="form-inline">
+                        <label>确认密码：</label>
+                        <input type="password" class="form-control" placeholder="再次输入密码" required minlength="6" (blur)="checkPassword()" formControlName="repeatPassword">
+                        <span class="input-group-addon" id="basic-addon2" *ngIf="userForm.get('password').value && !userForm.get('repeatPassword').value && !userForm.get('repeatPassword').untouched" >请再填写一次密码!</span>
+                        <span class="input-group-addon" id="basic-addon2" *ngIf="userForm.get('repeatPassword').value && !userForm.get('repeatPassword').untouched && !checkePassword" >两次密码不一致!</span>
+                        <span class="input-group-addon" id="basic-addon2" *ngIf="userForm.get('repeatPassword').value && !userForm.get('repeatPassword').untouched && checkePassword" >密码可以使用!</span>
+                    </div>
+                    <div class="form-inline">
+                        <div class="input-group regist-pro">
+                            <span class="input-group-addon">
+                                <input type="checkbox" required formControlName="agreement">
+                                我已阅读并同意
+                                <a>《研书屋用户注册协议》</a>
+                            </span>
+                        </div>
+                    </div>
+                    <!-- <div class="form-group goto-login">
+                        已有账号&nbsp;<a>前往登录</a>
+                    </div> -->
+                    <div class="form-group regist-button">
+                        <button type="submit" class="btn btn-default" 
+                            [disabled]="(userForm.status === 'INVALID') || !checkePassword || !checkEmailStatus" 
+                            (click)="register()">
+                        注册
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<app-share-footer></app-share-footer>

@@ -1,0 +1,37 @@
+.header{
+    background: #e3e4e5;
+}
+.header-right ul{
+	float: right;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+.header-right ul li {
+	display: inline-block;
+}
+.header-right ul li a {
+	cursor: pointer;
+	color: #999;
+	display: block;
+	margin: 8.9px;
+    font-size: 0.8125em;
+    text-decoration: none; /*a标签去掉下划线*/
+}
+.header-right ul li a:hover {
+	color: #41C3E5;
+	text-decoration: none;
+}
+
+.regist{
+    color: #41C3E5 !important; /*!important防止样式被覆盖*/
+}
+.nav-dropdown{
+	min-width: 106px !important;
+	border: 0px;
+	background-color: #F0F5F1 !important;
+	text-align: center;
+}
+.nav-dropdown li{
+	cursor: pointer;
+}

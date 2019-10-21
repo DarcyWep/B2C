@@ -1,0 +1,129 @@
+<app-share-header></app-share-header>
+<div class="container">
+    <div class="search-box row">
+        <div class="logo col-xs-12">
+            <a href="">
+                <img src="../../assets/img/logo/logo.jpg" alt=""/>
+                研书屋
+            </a>
+            为了梦想而奋斗！
+        </div>
+    </div>
+    <!-- 蓝色横线 -->
+    <div class="row" style="height: 1px; background-color: #2db4ea;"></div>
+    <!-- 空白 -->
+    <div class="row" style="height: 36px;" ></div>
+    <!-- 购物车内容 -->
+    <div class="row">
+        <table class="table">
+            <thead *ngIf="!isHaveCart">
+                <tr>
+                    <h4>购物车空空如也，快去添加商品吧！</h4>
+                </tr>
+            </thead>
+            <thead *ngIf="isHaveCart">
+                <tr class="">
+                    <th>
+                        <div class="checkbox checkbox-primary">
+                            <input  class="styled" type="checkbox" (click)="selectAllCart($event.target.checked)" [checked]="isSelectAll">
+                            <label></label>
+                        </div>
+                    </th>
+                    <th>商品图片</th>
+                    <th>商品名称</th>
+                    <th>单价</th>
+                    <th>数量</th>
+                    <th>总价</th>
+                    <th>移除</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let cart of carts">
+                    <td>
+                        <div class="checkbox checkbox-primary">
+                            <input  class="styled" type="checkbox" [checked]="cart.cartChecked" (click)="selectOneCart($event.target.checked, cart)">
+                            <label></label>
+                        </div>
+                    </td>
+                    <td>
+                        <img src="{{cart.productImg}}" class="img-rounded img-responsive center-block">
+                    </td>
+                    <td>{{cart.productName}}</td>
+                    <td class="money">￥{{cart.productPrice}}</td>
+                    <td class="quantity">
+                        <div class="input-group">
+                            <span class="input-group-addon" (click)="subQuantity(cart)">-</span>
+                            <input type="text" class="form-control" [(ngModel)]="cart.cartQuantity" 
+                                    (blur)="inputAlterQuantity(cart)" (keyup)="keyUpQuantity(cart)" name="quantity">
+                            <span class="input-group-addon" (click)="addQuantity(cart)">+</span>
+                        </div>
+                    </td>
+                    <td class="money">￥{{cart.cartTotalPrice}}</td>
+                    <td class="remove">
+                        <form >
+                            <input type="hidden" name="commodity_mid_id" >
+                            <button (click)="removeCart(cart)" class="btn btn-default" type="submit"><i class="fa fa-remove"></i></button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div *ngIf="isHaveCart">
+            <p class="text-right">
+                <button class="btn clear-cart" type="submit" (click)="removeAllCart()">清空购物车所有商品</button>
+                默认地址：
+                <button class="btn" data-toggle="modal" data-target="#myLargeModalLabel">
+                    {{userAddress}}
+                </button>
+            </p>
+            <div class="text-right order-total">
+                <span>商品数目：</span><span>{{orderTotalQuantity}}</span>
+                <span class="order-total-money1">订单总价：</span><span class="order-total-money2">￥{{orderTotalMoney}}</span>
+            </div>
+            <button class="create-order btn pull-right" type="submit"
+                    [disabled]="!isSelectCart" data-toggle="modal" data-target="#payModal">
+             立即下单
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="myLargeModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form class="alterAddress">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">修改默认地址</h4>
+                </div>
+                <div class="modal-body">
+                    <input type="text" [(ngModel)]="newAddress" class="form-control" name="address" placeholder="新的地址">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="submit" class="btn btn-primary" (click)="alterUserAddress()">保存修改</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- 支付二维码 -->
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="payModal" id="payModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">推荐使用支付宝！</h4>
+            </div>
+            <div class="modal-body pay-img">
+                <img src="../../../assets/img/pay.jpg" alt="">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" (click)="cancelOrder()">取消订单</button>
+                <button type="submit" class="btn create-order-over" (click)="createOrder()">完成支付</button>
+            </div>
+        </div>
+    </div>
+</div>
+
